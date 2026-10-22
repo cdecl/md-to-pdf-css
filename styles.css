@@ -135,12 +135,32 @@ tbody tr:hover {
 /* ─── Blockquote ────────────────────────────────────────────────────────── */
 blockquote {
   border-left: 4px solid var(--accent);
-  padding: 8px 14px;
+  padding: 4px 10px;
   color: #3d4255;
   background: #f2faf8;
-  margin: 12px 0;
+  margin: 1px 0 !important;
   border-radius: 0 var(--radius) var(--radius) 0;
-  font-style: italic;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+blockquote blockquote {
+  font-size: 1em;
+  margin: 2px 0 !important;
+}
+
+/* 인용구 내부 문단 마진 완전 제거 (기본 1em 마진 무력화) */
+blockquote p {
+  margin: 0;
+}
+
+blockquote p + p {
+  margin-top: 4px;
+}
+
+/* 인용구 전후 문단 간격 최소화 (거의 마진 없이 밀착) */
+blockquote + p {
+  margin-top: 4px;
 }
 
 /* ─── Code ──────────────────────────────────────────────────────────────── */
