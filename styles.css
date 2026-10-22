@@ -237,7 +237,7 @@ h6 + * {
 table, tr, td, th,
 img, svg, figure,
 pre, blockquote,
-li {
+ul, ol, li {
   break-inside: avoid;
   page-break-inside: avoid;
 }

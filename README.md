@@ -115,7 +115,7 @@ PDF 출력 시 페이지 경계선에서 내용이 잘리거나 어색해지는 
   > **주의**: 블록 전체 높이가 A4 1페이지를 초과하면 인쇄 엔진에서 페이지 하단이 잘릴 수 있으므로, A4 1페이지 이내의 단위(주로 `h3` 하위 섹션)에 적용하는 것을 권장합니다.
 * **콘텐츠 중간 잘림 방지 (`break-inside: avoid`)**:
   ```css
-  table, tr, td, th, img, svg, figure, pre, blockquote, li {
+  table, tr, td, th, img, svg, figure, pre, blockquote, ul, ol, li {
     break-inside: avoid;
     page-break-inside: avoid;
   }
@@ -123,7 +123,7 @@ PDF 출력 시 페이지 경계선에서 내용이 잘리거나 어색해지는 
   * **표(`table`, `tr`)**: 행 중간에서 텍스트가 위아래로 갈라지지 않음
   * **이미지(`img`)**: 페이지 경계선에서 이미지가 반으로 쪼개지지 않음
   * **코드 블록(`pre`) / 인용구(`blockquote`)**: 박스 테두리와 코드가 온전한 블록 형태로 유지
-  * **목록(`li`)**: 개별 목록 아이템 단위로 페이지 분할 제어
+  * **목록(`ul`, `ol`, `li`)**: 목록 아이템이 페이지 경계선에서 낱개로 쪼개지지 않고 목록 전체가 온전한 그룹으로 유지
 * **표 헤더 자동 반복**:
   ```css
   thead {
