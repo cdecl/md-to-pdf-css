@@ -222,6 +222,17 @@ h1, h2, h3, h4, h5, h6 {
   page-break-inside: avoid;
 }
 
+/* 제목 바로 다음의 첫 번째 요소(문단, 목록, 표 등)는 제목과 분리되지 않도록 보강 */
+h1 + *,
+h2 + *,
+h3 + *,
+h4 + *,
+h5 + *,
+h6 + * {
+  break-before: avoid;
+  page-break-before: avoid;
+}
+
 /* 요소 내부 분할 금지 (콘텐츠가 중간에 쪼개지는 현상 방지) */
 table, tr, td, th,
 img, svg, figure,
@@ -229,6 +240,19 @@ pre, blockquote,
 li {
   break-inside: avoid;
   page-break-inside: avoid;
+}
+
+/* ─── Keep Together / No-Break Containers ───────────────────────────────── */
+/* 특정 섹션(h2/h3 및 하위 콘텐츠)이나 블록 전체를 한 페이지에 묶어 페이지 분할 방지 */
+.no-break,
+.keep-together,
+section.no-break,
+section.keep-together,
+div.no-break,
+div.keep-together {
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+  display: block;
 }
 
 /* 긴 표가 여러 페이지에 걸칠 때 표 헤더 반복 */

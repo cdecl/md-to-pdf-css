@@ -86,14 +86,33 @@ chmod +x pdf.sh
 ### 3. 인쇄 & 페이지 분할 최적화 (Print Pagination)
 PDF 출력 시 페이지 경계선에서 내용이 잘리거나 어색해지는 현상을 CSS로 완벽히 방지합니다:
 
-* **고아 제목(Orphan Heading) 방지**:
+* **고아 제목(Orphan Heading) 및 제목-본문 분리 방지**:
   ```css
   h1, h2, h3, h4, h5, h6 {
     break-after: avoid;
     page-break-after: avoid;
   }
+  h1 + *, h2 + *, h3 + *, h4 + *, h5 + *, h6 + * {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
   ```
-  제목만 페이지 맨 밑에 홀로 남고 본문이 다음 페이지로 넘어가는 현상을 원천 차단합니다.
+  제목만 페이지 맨 밑에 홀로 남거나, 제목 바로 뒤의 첫 번째 콘텐츠가 다음 페이지로 분리되는 현상을 원천 차단합니다.
+* **섹션 및 블록 한 덩어리로 묶기 (`keep-together`)**:
+  `h2`나 `h3` 하위의 여러 문단/표/코드 블록이 페이지 경계에서 쪼개지지 않고 **한 페이지에 온전히 함께 유지**되도록 하려면 `<section class="keep-together">` 태그를 사용합니다:
+  ```markdown
+  <section class="keep-together">
+
+  ### 세부 설정 가이드
+  이곳의 설명 문단과 아래 표는 페이지 중간에서 잘리지 않고 항상 한 페이지에 묶여 표시됩니다.
+
+  | 항목 | 값 |
+  | :--- | :--- |
+  | 설정A | 기본값 |
+
+  </section>
+  ```
+  > **주의**: 블록 전체 높이가 A4 1페이지를 초과하면 인쇄 엔진에서 페이지 하단이 잘릴 수 있으므로, A4 1페이지 이내의 단위(주로 `h3` 하위 섹션)에 적용하는 것을 권장합니다.
 * **콘텐츠 중간 잘림 방지 (`break-inside: avoid`)**:
   ```css
   table, tr, td, th, img, svg, figure, pre, blockquote, li {
