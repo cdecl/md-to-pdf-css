@@ -1,28 +1,66 @@
 /* ─── Typography & Base ─────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --primary:    #3b6ef6;
-  --primary-lt: #ebf0ff;
-  --text:       #1e2235;
+  /* ── 주 색상: 차분한 스틸 블루 ── */
+  --primary: #4a6fa5;
+  --primary-lt: #edf1f8;
+  --primary-dk: #2e4a78;
+  --primary-line: #c5d3e8;
+
+  /* ── 텍스트 ── */
+  --text: #2a2d3e;
   --text-muted: #6b7080;
-  --border:     #e2e5ee;
-  --border-lt:  #edf0f7;
-  --bg-alt:     #f7f8fc;
-  --accent:     #00b89c;
-  --danger:     #e8445a;
-  --radius:     6px;
+  --text-light: #9a9daf;
+
+  /* ── 서피스 ── */
+  --bg: #ffffff;
+  --bg-subtle: #f9fafb;
+  --bg-alt: #f2f4f8;
+
+  /* ── 보더 ── */
+  --border: #dce0ec;
+  --border-lt: #edf0f8;
+
+  /* ── 인용 전용 (기존 스타일과 구별: 웜 슬레이트) ── */
+  --quote-bar: #8896b3;
+  --quote-bg: #f4f5f9;
+  --quote-text: #555870;
+
+  /* ── 액센트 (녹색 계열 → 슬레이트-청록으로 변경) ── */
+  --accent: #3a7d9e;
+  --accent-lt: #e6f4f9;
+
+  /* ── 상태 색상 (채도 낮춤) ── */
+  --warn: #a0700a;
+  --warn-lt: #fef6e4;
+  --danger: #b94040;
+  --danger-lt: #fceaea;
+
+  /* ── 코드 블록 (톤 다운 및 일체감) ── */
+  --code-bg: #f7f8fa;
+  --code-text: #383a42;
+  --code-inline: #484b58;
+
+  --radius: 4px;
+  --radius-lg: 6px;
 }
 
+/* ─── Body ──────────────────────────────────────────────────────────────── */
 body {
   font-family: "Noto Sans KR", "Apple SD Gothic Neo", Inter, -apple-system, sans-serif;
-  font-size: 13px;
-  line-height: 1.75;
+  font-size: 12.5px;
+  line-height: 1.8;
   color: var(--text);
   margin: 0;
   padding: 0;
-  background: #fff;
+  background: var(--bg);
   word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  margin: 0 0 8px;
 }
 
 /* ─── Headings ──────────────────────────────────────────────────────────── */
@@ -30,94 +68,133 @@ h1 {
   font-size: 22px;
   font-weight: 700;
   color: var(--text);
-  margin-top: 0;
-  margin-bottom: 10px;
-  letter-spacing: -0.3px;
+  margin: 0 0 16px;
+  letter-spacing: -0.4px;
+  line-height: 1.3;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+
+/* H1 하단 포인트 바 */
+h1::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--primary);
 }
 
 h2 {
-  font-size: 15.5px;
+  font-size: 14px;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--primary-dk);
+  margin: 22px 0 10px;
+  letter-spacing: -0.1px;
+  padding: 0 0 6px 0;
   border-bottom: 2px solid var(--primary);
-  padding-bottom: 0.25em;
-  margin-top: 22px;
-  margin-bottom: 14px;
-  letter-spacing: -0.2px;
+  background: none;
 }
 
 h3 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--primary);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0.2em;
-  margin-top: 18px;
-  margin-bottom: 8px;
+  color: var(--text);
+  margin: 16px 0 7px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-lt);
 }
 
 h4 {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
-  color: #4a5270;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0.2em;
-  margin-top: 14px;
-  margin-bottom: 6px;
+  color: var(--text-muted);
+  margin: 12px 0 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 h5 {
-  font-size: 12.5px;
+  font-size: 11.5px;
   font-weight: 600;
   color: var(--accent);
-  margin-top: 10px;
-  margin-bottom: 4px;
+  margin: 10px 0 4px;
+}
+
+h6 {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-light);
+  margin: 8px 0 3px;
 }
 
 /* ─── Lists ─────────────────────────────────────────────────────────────── */
-ul, ol {
-  padding-left: 20px;
-  margin-top: 4px;
-  margin-bottom: 10px;
+ul,
+ol {
+  padding-left: 18px;
+  margin: 4px 0 10px;
 }
 
 li {
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+  padding-left: 2px;
 }
 
-li::marker {
+ul>li::marker {
   color: var(--primary);
+  content: "• ";
+}
+
+ol>li::marker {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+li:has(> input[type="checkbox"]) {
+  list-style: none;
+  margin-left: -18px;
+  padding-left: 4px;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--primary);
+  margin-right: 5px;
 }
 
 /* ─── Table ─────────────────────────────────────────────────────────────── */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 14px 0;
-  font-size: 12.5px;
-  border-radius: var(--radius);
+  margin: 2px 0;
+  font-size: 90%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 0 0 1px var(--border);
 }
 
 thead tr {
-  background: var(--primary-lt);
-  color: var(--primary);
-  font-weight: 600;
+  background: var(--primary-dk);
+  color: #f0f4ff;
 }
 
 thead th {
-  padding: 8px 12px;
+  padding: 3px 10px;
   text-align: left;
-  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 90%;
+  letter-spacing: 0.1px;
   white-space: nowrap;
 }
 
 tbody td {
-  padding: 7px 12px;
+  padding: 3px 10px;
   border-bottom: 1px solid var(--border-lt);
   color: var(--text);
   vertical-align: top;
+  font-size: 90%;
 }
 
 tbody tr:last-child td {
@@ -125,64 +202,68 @@ tbody tr:last-child td {
 }
 
 tbody tr:nth-child(even) {
-  background: var(--bg-alt);
+  background: var(--bg-subtle);
 }
 
 tbody tr:hover {
-  background: #f0f4ff;
+  background: var(--primary-lt);
 }
 
-/* ─── Blockquote ────────────────────────────────────────────────────────── */
+/* ─── Blockquote (기존 styles.css 민트/초록 바와 구별: 웜 슬레이트 바) ── */
 blockquote {
-  border-left: 4px solid var(--accent);
-  padding: 4px 10px;
-  color: #3d4255;
-  background: #f2faf8;
+  border-left: 3px solid var(--quote-bar);
+  padding: 5px 12px;
+  color: var(--quote-text);
+  background: var(--quote-bg);
   margin: 1px 0 !important;
   border-radius: 0 var(--radius) var(--radius) 0;
   font-size: 0.9em;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 blockquote blockquote {
   font-size: 1em;
   margin: 2px 0 !important;
+  border-left-color: var(--accent);
 }
 
-/* 인용구 내부 문단 마진 완전 제거 (기본 1em 마진 무력화) */
 blockquote p {
   margin: 0;
 }
 
-blockquote p + p {
+blockquote p+p {
   margin-top: 4px;
 }
 
-/* 인용구 전후 문단 간격 최소화 (거의 마진 없이 밀착) */
-blockquote + p {
+blockquote+p {
   margin-top: 4px;
 }
 
-/* ─── Code ──────────────────────────────────────────────────────────────── */
+blockquote pre {
+  padding: 4px 8px;
+  margin: 0;
+  border: 1px solid var(--border-lt);
+  font-size: 90%;
+}
 code {
   font-family: "JetBrains Mono", "Fira Code", "Menlo", monospace;
-  font-size: 11.5px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  padding: 1px 5px;
-  border-radius: 4px;
-  color: var(--danger);
+  font-size: 90%;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--code-inline);
 }
 
 pre {
-  background: #1e2235;
-  color: #e2e5ee;
-  padding: 12px 16px;
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 4px 8px;
   border-radius: var(--radius);
   overflow-x: auto;
-  font-size: 11.5px;
-  line-height: 1.6;
-  margin: 12px 0;
+  font-size: 90%;
+  line-height: 1.5;
+  margin: 0;
+  border: 1px solid var(--border-lt);
 }
 
 pre code {
@@ -197,20 +278,15 @@ pre code {
 hr {
   border: 0;
   height: 1px;
-  background: linear-gradient(to right, var(--primary), transparent);
-  margin: 20px 0;
-  opacity: 0.3;
+  background: var(--border);
+  margin: 18px 0;
 }
 
 /* ─── Links ─────────────────────────────────────────────────────────────── */
 a {
   color: var(--primary);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-
-a:hover {
-  border-bottom-color: var(--primary);
+  border-bottom: 1px dotted var(--primary-line);
 }
 
 /* ─── Strong / Em ───────────────────────────────────────────────────────── */
@@ -224,46 +300,85 @@ em {
   font-style: italic;
 }
 
+mark {
+  background: var(--warn-lt);
+  color: var(--warn);
+  padding: 0 3px;
+  border-radius: 2px;
+}
+
 /* ─── Images ────────────────────────────────────────────────────────────── */
 img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 12px 0;
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
 }
 
-/* ─── Page Break & Print Rules ──────────────────────────────────────────── */
-/* 제목 직후 분할 금지 (제목만 페이지 하단에 남는 현상 방지) */
-h1, h2, h3, h4, h5, h6 {
-  break-after: avoid;
-  page-break-after: avoid;
-  break-inside: avoid;
-  page-break-inside: avoid;
+/* ─── Badge (인라인 레이블) ─────────────────────────────────────────────── */
+/* 사용 예: <span class="badge primary">완료</span>               */
+.badge {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
 }
 
-/* 제목 바로 다음의 첫 번째 요소(문단, 목록, 표 등)는 제목과 분리되지 않도록 보강 */
-h1 + *,
-h2 + *,
-h3 + *,
-h4 + *,
-h5 + *,
-h6 + * {
-  break-before: avoid;
-  page-break-before: avoid;
+.badge.primary {
+  background: var(--primary-lt);
+  color: var(--primary-dk);
 }
 
-/* 요소 내부 분할 금지 (콘텐츠가 중간에 쪼개지는 현상 방지) */
-table, tr, td, th,
-img, svg, figure,
-pre, blockquote,
-ul, ol, li {
-  break-inside: avoid;
-  page-break-inside: avoid;
+.badge.success {
+  background: var(--accent-lt);
+  color: var(--accent);
+}
+
+.badge.warn {
+  background: var(--warn-lt);
+  color: var(--warn);
+}
+
+.badge.danger {
+  background: var(--danger-lt);
+  color: var(--danger);
+}
+
+/* ─── Callout Box ────────────────────────────────────────────────────────── */
+/* 사용 예: <div class="callout info"><strong>NOTE</strong> 내용</div> */
+.callout {
+  border-radius: var(--radius-lg);
+  padding: 9px 13px;
+  margin: 8px 0;
+  font-size: 0.9em;
+  line-height: 1.65;
+}
+
+.callout.info {
+  background: var(--primary-lt);
+  border-left: 3px solid var(--primary);
+}
+
+.callout.success {
+  background: var(--accent-lt);
+  border-left: 3px solid var(--accent);
+}
+
+.callout.warn {
+  background: var(--warn-lt);
+  border-left: 3px solid var(--warn);
+}
+
+.callout.danger {
+  background: var(--danger-lt);
+  border-left: 3px solid var(--danger);
 }
 
 /* ─── Keep Together / No-Break Containers ───────────────────────────────── */
-/* 특정 섹션(h2/h3 및 하위 콘텐츠)이나 블록 전체를 한 페이지에 묶어 페이지 분할 방지 */
 .no-break,
 .keep-together,
 section.no-break,
@@ -275,12 +390,49 @@ div.keep-together {
   display: block;
 }
 
-/* 긴 표가 여러 페이지에 걸칠 때 표 헤더 반복 */
+/* ─── Page Break & Print Rules ──────────────────────────────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  break-after: avoid;
+  page-break-after: avoid;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+h1+*,
+h2+*,
+h3+*,
+h4+*,
+h5+*,
+h6+* {
+  break-before: avoid;
+  page-break-before: avoid;
+}
+
+table,
+tr,
+td,
+th,
+img,
+svg,
+figure,
+pre,
+blockquote,
+ul,
+ol,
+li {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
 thead {
   display: table-header-group;
 }
 
-/* 수동 페이지 나누기 div 지원 */
 div[style*="page-break-after"] {
   page-break-after: always;
   break-after: page;
