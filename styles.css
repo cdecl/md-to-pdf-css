@@ -1,5 +1,5 @@
 /* ─── Typography & Base ─────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   /* ── 주 색상: 차분한 스틸 블루 ── */
@@ -243,11 +243,11 @@ blockquote pre {
   padding: 4px 8px;
   margin: 0;
   border: 1px solid var(--border-lt);
-  font-size: 90%;
+  font-size: 80%;
 }
 code {
   font-family: "JetBrains Mono", "Fira Code", "Menlo", monospace;
-  font-size: 90%;
+  font-size: 80%;
   background: none;
   border: none;
   padding: 0;
@@ -260,7 +260,7 @@ pre {
   padding: 4px 8px;
   border-radius: var(--radius);
   overflow-x: auto;
-  font-size: 90%;
+  font-size: 80%;
   line-height: 1.5;
   margin: 0;
   border: 1px solid var(--border-lt);
