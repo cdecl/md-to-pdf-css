@@ -13,7 +13,7 @@ metadata:
 
 # Markdown to PDF Skill
 
-Convert markdown (`.md`) files into clean, professional A4 PDF documents using the `md-to-pdf-css` toolkit (`pdf.sh` and `styles.css`), ensuring proper pagination, typography, and layout.
+Convert markdown (`.md`) files into clean, professional A4 PDF documents using the `md-to-pdf-css` toolkit via `~/bin/pdf.sh`, ensuring proper pagination, typography, and layout.
 
 ## When to Use
 - When converting documentation, reports, or notes from Markdown to a styled A4 PDF.
@@ -21,12 +21,14 @@ Convert markdown (`.md`) files into clean, professional A4 PDF documents using t
 
 ## Prerequisites
 - Node.js (v18+) and `md-to-pdf` installed globally (`npm install -g md-to-pdf`).
-- Project repository located at `/Users/cdecl/dev/md-to-pdf-css/`.
+- Executable script available at `~/bin/pdf.sh`.
 
 ## How to Run
-Convert any markdown file using the conversion script via `terminal`:
+Convert any markdown file using the global bin script via `terminal`:
 ```python
-terminal(command="./pdf.sh path/to/document.md")
+terminal(command="pdf.sh path/to/document.md")
+# or absolute path:
+terminal(command="~/bin/pdf.sh path/to/document.md")
 ```
 
 ## CSS Pagination Rules
