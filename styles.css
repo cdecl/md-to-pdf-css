@@ -189,6 +189,11 @@ thead th {
   white-space: nowrap;
 }
 
+/* 어두운 헤더 배경에서 인라인 코드가 묻히지 않도록 헤더 텍스트 색 상속 */
+thead th code {
+  color: inherit;
+}
+
 tbody td {
   padding: 3px 10px;
   border-bottom: 1px solid var(--border-lt);
